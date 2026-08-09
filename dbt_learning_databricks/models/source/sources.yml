@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: source
+    description: raw data that loads into the bronze layer
+    database: dbt
+    schema: default
+    tables:
+      - name: raw_rfm_sales_transactions
+        description: Raw data that loads into the bronze layer
+

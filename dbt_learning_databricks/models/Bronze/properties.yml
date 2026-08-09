@@ -1,0 +1,12 @@
+version: 2
+# This file contains metadata about the models in this directory.
+# For more information, see https://docs.getdbt.com/docs/building-a-dbt-project/building-models/documentation-and-metadata
+# 2nd Level Priority of the properties.yml file is to provide metadata about the models in this directory. This includes descriptions, columns, and tests.
+
+models:
+  - name: bronze
+    description: "Bronze layer model properties."
+    config:
+      materialized: view
+      tags:
+        - bronze
