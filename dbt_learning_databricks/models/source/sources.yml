@@ -8,3 +8,11 @@ sources:
     tables:
       - name: sales
         description: Raw data that loads into the bronze layer
+
+  - name: silver_source
+    description: raw data that loads into the silver layer`
+    database: silver
+    schema: default_silver_layer
+    tables:
+      - name: fact_sales
+        description: Raw data that loads into the silver layer
