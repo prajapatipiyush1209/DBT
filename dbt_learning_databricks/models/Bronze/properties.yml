@@ -1,12 +1,23 @@
 version: 2
-# This file contains metadata about the models in this directory.
-# For more information, see https://docs.getdbt.com/docs/building-a-dbt-project/building-models/documentation-and-metadata
-# 2nd Level Priority of the properties.yml file is to provide metadata about the models in this directory. This includes descriptions, columns, and tests.
 
 models:
   - name: bronze
     description: "Bronze layer model properties."
-    config:
-      materialized: view
-      tags:
-        - bronze
+    # Generic test for the Transaction Id column to ensure it is not null and unique.
+    columns:
+      - name: "Transaction Id"
+        quote: true
+        description: "The unique identifier for each transaction."
+        data_tests:
+          - not_null
+          - unique
+    #Product Category column to ensure that the values are within the accepted values.
+      - name: "Product Category"
+        quote: true
+        description: "The category of the product involved in the transaction."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - 'Electronics'
+                  - 'Office Supplies'
