@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: fact_sales
+  - name: bronze
     description: "Bronze layer model properties."
     # Generic test for the Transaction Id column to ensure it is not null and unique.
     columns:

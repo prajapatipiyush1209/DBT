@@ -3,16 +3,16 @@ version: 2
 sources:
   - name: source
     description: raw data that loads into the bronze layer
-    database: bronze
-    schema: default
+    database: "{{ var('catalog_map')[target.name]['bronze'] }}"
+    schema: "{{ var('schema_map')[target.name]['bronze_schema'] }}"
     tables:
       - name: sales
         description: Raw data that loads into the bronze layer
 
   - name: silver_source
-    description: raw data that loads into the silver layer`
-    database: silver
-    schema: default_silver_layer
+    description: raw data that loads into the silver layer
+    database: "{{ var('catalog_map')[target.name]['silver'] }}"
+    schema: "{{ var('schema_map')[target.name]['silver_schema'] }}"
     tables:
       - name: fact_sales
-        description: Raw data that loads into the silver layer
+        description: Raw data that loads into the bronze layer
