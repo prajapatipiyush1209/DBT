@@ -1,3 +1,3 @@
 SELECT * FROM 
-{{ref('bronze')}}
+{{ref('fact_sales')}}
 where quantity < 0

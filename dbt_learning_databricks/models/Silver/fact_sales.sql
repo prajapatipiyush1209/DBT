@@ -18,10 +18,12 @@ FROM {{ source('source', 'sales') }} #}
     -- Remove duplicates and null values from the transaction_id column to make the test pass.
 --===========================================================================
 {{ config(
+    tags=['silver'],
     materialized='incremental',
-    unique_key='Transaction Id',
-    catalog='silver',
-    schema='silver_layer'
+    incremental_strategy='merge',
+    unique_key='transaction_id',
+    catalog=var("catalog_map")[target.name]["silver"],
+    schema=var("schema_map")[target.name]["silver_schema"]
     ) }}
 
     WITH ranked AS (
